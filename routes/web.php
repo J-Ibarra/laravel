@@ -15,6 +15,12 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Auth::routes();
+
+Route::group(['prefix' => 'user'], function () {
+    Auth::routes();
+});
+
+Route::get('/getToken', 'token@csrf_token');
+
 
 Route::get('/home', 'HomeController@index');
